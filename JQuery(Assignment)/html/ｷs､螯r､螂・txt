@@ -1,0 +1,408 @@
+<!-- Modal -->
+  <div class="modal fade" id="editRest" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title">Edit Restaurant </h2>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" id="editRestaurant">
+              <div class="form-group" align="center">
+                  
+                  <div class="col-sm-10" align="center">
+                      <button type="button" class="btn btn-primary" style="width: 45%;" id="btnUpdate" onclick="editUpdate()">Update</button>
+                      <script>
+                          function editUpdate() {
+                            document.getElementById("editName").disabled = false;
+                            document.getElementById("openDate").disabled = false;
+                            document.getElementById("address").disabled = false;
+                            document.getElementById("editPhone").disabled = false;
+                            document.getElementById("dishes").disabled = false;
+                            document.getElementById("restType").disabled = false;
+                            document.getElementById("uploadPhoto").disabled = false;
+                            document.getElementById('addSpecialMenu').style.visibility = 'hidden';
+                            document.getElementById('saveRest').style.visibility = 'visible';
+                          }
+                          </script>
+                  <button type="button" class="btn btn-danger" style="width: 45%;">Delete</button>
+                  </div>
+                  
+                </div>
+                <hr/>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Restaurant Name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" style="width:50%;" id="editName" placeholder="Enter Name" disabled>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <label class="control-label col-sm-2" >Open Date:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" rows="5" id="openDate" placeholder="Enter Open Date" disabled></textarea>
+        </div>
+      </div>
+      <hr/>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="address">Address:</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" rows="5" id="address" placeholder="Enter Address" disabled></textarea>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <label class="control-label col-sm-2" for="address">Telephone:</label>
+      <div class="col-sm-10">
+      
+        <input type="text" class="form-control" style="width:50%;" id="editPhone" placeholder="Enter Telephone Number" disabled>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <label class="control-label col-sm-2" for="address">Dishes:</label>
+      <div class="col-sm-10">
+      
+        <select class="form-control" id="dishes" style="width:45%;" disabled>
+        <option>Vietnam</option>
+        <option>Serbia</option>
+        <option>Jordan</option>
+        <option>Mexico</option>
+        <option>Italy</option>
+        <option>Taiwan</option>
+        <option>Mexico</option>
+        <option>Taiwan</option>
+        <option>Montenegro</option>
+        <option>Nicaragua</option>
+        <option>Burma (Myanmar)</option>
+        <option>France</option>
+        <option>El Salvador</option>
+        <option>Greece</option>
+        <option>United States of America</option>
+        <option>Kosovo</option>
+        <option>Thailand</option>
+        <option>Georgia</option>
+        <option>Ethiopia</option>
+        <option>Armenia</option>
+        <option>Costa Rica</option>
+        <option>Romania</option>
+        <option>Philippines</option>
+        <option>Belize</option>
+        <option>Singapore</option>
+        <option>Israel</option>
+        <option>Panama</option>
+        <option>Japan</option>
+        <option>Laos</option>
+        <option>Hungary</option>
+        <option>South Korea</option>
+        <option>The Seychelles</option>
+        <option>Cyprus</option>
+        <option>Luxembourg</option>
+        <option>Canada</option>
+        <option>Tanzania</option>
+        <option>Iceland</option>
+        <option>Jamaica</option>
+        <option>Slovakia</option>
+        <option>Norway</option>
+        <option>Portugal</option>
+        <option>Spain</option>
+        <option>Belgium</option>
+        <option>Czech Republic</option>
+        <option>Austria</option>
+        <option>Guatemala</option>
+      </select>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <label class="control-label col-sm-2" for="address">Food/ Restaurant Type:</label>
+      <div class="col-sm-10">
+      
+        <select class="form-control" id="restType" style="width:45%;" disabled>
+        <option>Tea Restaurant</option>
+        <option>Food Stall Noodles</option>
+        <option>Dai Pai Dong</option>
+        <option>Noodles/Rice Noodles</option>
+        <option>Congee</option>
+        <option>Wonton/Dumpling</option>
+        <option>Fast Food</option>
+        <option>Cooked Food Center</option>
+        <option>Snack Shop & Deli</option>
+      </select>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="address">Upload Photo:</label>
+     <input type="file" name="pic"  accept="image/*" id="uploadPhoto" disabled/>
+     
+    </div>
+  <!-- Modal -->
+  <div class="modal fade" id="editRest" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title">Edit Restaurant </h2>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" id="editRestaurant">
+              <div class="form-group" align="center">
+                  
+                  <div class="col-sm-10" align="center">
+                      <button type="button" class="btn btn-primary" style="width: 45%;" id="btnUpdate" onclick="editUpdate()" >Update</button>
+                      <script>
+                          function editUpdate() {
+                            document.getElementById("editName").disabled = false;
+                            document.getElementById("editBranches").disabled = false;
+                            document.getElementById("openDate").disabled = false;
+                            document.getElementById("address").disabled = false;
+                            document.getElementById("editPhone").disabled = false;
+                            document.getElementById("dishes").disabled = false;
+                            document.getElementById("restType").disabled = false;
+                            document.getElementById("uploadPhoto").disabled = false;
+                            document.getElementById('addSpecialMenu').style.visibility = 'hidden';
+                            document.getElementById('btnUpdate').style.visibility = 'hidden';
+                            document.getElementById('saveRest').style.visibility = 'visible';
+                          }
+                          
+                          </script>
+                  <button type="button" class="btn btn-danger" style="width: 45%;" onclick="deleteForm()" data-dismiss="modal">Delete</button>
+                  
+                </div>
+                  
+                </div>
+                <hr/>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Restaurant Name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" style="width:50%;" id="editName" placeholder="Enter Name" disabled>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <label class="control-label col-sm-2" for="branches">Branches:</label>
+      <div class="col-sm-10">
+      
+        <select class="form-control" id="editBranches" style="width:45%;" disabled>
+        <option>Mount Davis</option>
+        <option>Kennedy Town</option>
+        <option>Pok Fu Lam</option>
+        <option>Western District</option>
+        <option>Mid Levels</option>
+        <option>Peak</option>
+        <option>Sai Ying Pun</option>
+        <option>Central</option>
+        <option>Wan Chai</option>
+        <option>Happy Valley</option>
+        <option>Causeway Bay</option>
+        <option>North Point</option>
+        <option>Quarry Bay</option>
+        <option>Sau Kei Wan</option>
+        <option>Chai Wan</option>
+        <option>Stonecutters Island</option>
+        <option>Lai Chi Kok</option>
+        <option>Cheung Sha Wan</option>
+        <option>North Cheung Sha Wan</option>
+        <option>Sham Shui Po</option>
+        <option>Mong Kok</option>
+        <option>Shek Kip Mei</option>
+        <option>Yau Ma Tei</option>
+        <option>Tsim Sha Tsui</option>
+        <option>King's Park</option>
+        <option>Ho Man Tin</option>
+        <option>Kowloon Tong</option>
+        <option>Hung Hom</option>
+        <option>Ma Tau Kok</option>
+        <option>Wong Tai Sin</option>
+        <option>Kowloon City</option>
+        <option>Hong Kong Airport (Kai Tak)</option>
+        <option>San Po Kong</option>
+        <option>Jordan Valley</option>
+        <option>Ngau Tau Kok</option>
+        <option>Kwun Tong</option>
+        <option>Yau Tong</option>
+        <option>Lei Yue Mun</option>
+        <option>Diamond Hill (Area)</option>
+        <option>Ngau Chi Wan (Area)</option>
+        <option>Lung Cheung Road (Area)</option>
+        <option>Tsuen Wan</option>
+        <option>Sha Tin</option>
+        <option>Tai Po</option>
+        <option>Tuen Mun</option>
+        <option>Sai Kung</option>
+        <option>Sheung Shui</option>
+        <option>Fan Ling</option>
+        <option>Sha Tau Kok</option>
+        <option>Ta Kwu Ling</option>
+      </select>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <label class="control-label col-sm-2" >Open Date:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" rows="5" id="openDate" placeholder="Enter Open Date" disabled></textarea>
+        </div>
+      </div>
+      <hr/>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="address">Address:</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" rows="5" id="address" placeholder="Enter Address" disabled></textarea>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <label class="control-label col-sm-2" for="address">Telephone:</label>
+      <div class="col-sm-10">
+      
+        <input type="text" class="form-control" style="width:50%;" id="editPhone" placeholder="Enter Telephone Number" disabled>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <label class="control-label col-sm-2" for="address">Dishes:</label>
+      <div class="col-sm-10">
+      
+        <select class="form-control" id="dishes" style="width:45%;" disabled>
+        <option>Vietnam</option>
+        <option>Serbia</option>
+        <option>Jordan</option>
+        <option>Mexico</option>
+        <option>Italy</option>
+        <option>Taiwan</option>
+        <option>Mexico</option>
+        <option>Taiwan</option>
+        <option>Montenegro</option>
+        <option>Nicaragua</option>
+        <option>Burma (Myanmar)</option>
+        <option>France</option>
+        <option>El Salvador</option>
+        <option>Greece</option>
+        <option>United States of America</option>
+        <option>Kosovo</option>
+        <option>Thailand</option>
+        <option>Georgia</option>
+        <option>Ethiopia</option>
+        <option>Armenia</option>
+        <option>Costa Rica</option>
+        <option>Romania</option>
+        <option>Philippines</option>
+        <option>Belize</option>
+        <option>Singapore</option>
+        <option>Israel</option>
+        <option>Panama</option>
+        <option>Japan</option>
+        <option>Laos</option>
+        <option>Hungary</option>
+        <option>South Korea</option>
+        <option>The Seychelles</option>
+        <option>Cyprus</option>
+        <option>Luxembourg</option>
+        <option>Canada</option>
+        <option>Tanzania</option>
+        <option>Iceland</option>
+        <option>Jamaica</option>
+        <option>Slovakia</option>
+        <option>Norway</option>
+        <option>Portugal</option>
+        <option>Spain</option>
+        <option>Belgium</option>
+        <option>Czech Republic</option>
+        <option>Austria</option>
+        <option>Guatemala</option>
+      </select>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <label class="control-label col-sm-2" for="address">Food/ Restaurant Type:</label>
+      <div class="col-sm-10">
+      
+        <select class="form-control" id="restType" style="width:45%;" disabled>
+        <option>Tea Restaurant</option>
+        <option>Food Stall Noodles</option>
+        <option>Dai Pai Dong</option>
+        <option>Noodles/Rice Noodles</option>
+        <option>Congee</option>
+        <option>Wonton/Dumpling</option>
+        <option>Fast Food</option>
+        <option>Cooked Food Center</option>
+        <option>Snack Shop & Deli</option>
+      </select>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="address">Upload Photo:</label>
+     <input type="file" name="pic"  accept="image/*" id="uploadPhoto" disabled/>
+     
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <button type="button" class="btn btn-success" data-toggle="modal" style="width:45%;" data-target="#editMenu">Edit Menu</button>
+        <div class="modal fade" id="editMenu">
+          <div class="modal-dialog modal-lg" style="width:80%">
+            <div class="modal-content">
+            
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Edit Menu</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              
+              <!-- Modal body -->
+              <div class="modal-body">
+                <button type="button" id="addMenu">Add Menu</button>
+                <script>
+                  $(document).ready(function() {
+                  var row=0;
+                    $("#addMenu").click(function(){
+                      $("#menuTable").append("<tr id="+row+"><td><input type='text'></td><td><select><option>special</option></select></td><td><input type='date'></td><td><input type='text'></td><td><input type='checkbox' value='hide'>Hidden</td><td><button id='deleteMenu'>Delete Menu</button></td></tr>");
+                        row=row+1;
+                    });
+                    $("#menuTable").on('click', '#deleteMenu', function () {
+                    $(this).closest('tr').remove();
+                  });
+                  
+                    });
+                  </script>
+                <hr/>
+                <table id="menuTable" width="100%" border="1">
+                  <tr><th>Name</th><th>Type</th><th>Date</th><th>$</th><th>Status</th><th>Option</th></tr>
+                </table>
+              </div>
+              
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-success" id="saveRest" width="45%" style="visibility: hidden;" onclick="updateSave()">Save</button>
+    <script>
+      function updateSave(){
+                            document.getElementById("editName").disabled = true;
+                            document.getElementById("editBranches").disabled = true;
+                            document.getElementById("openDate").disabled = true;
+                            document.getElementById("address").disabled = true;
+                            document.getElementById("editPhone").disabled = true;
+                            document.getElementById("dishes").disabled = true;
+                            document.getElementById("restType").disabled = true;
+                            document.getElementById("uploadPhoto").disabled = true;
+                            document.getElementById('addSpecialMenu').style.visibility = 'visible';
+                            document.getElementById('saveRest').style.visibility = 'hidden';
+                          }
+    </script>
+    </div>
+  </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>

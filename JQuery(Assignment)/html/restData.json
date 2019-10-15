@@ -1,0 +1,10 @@
+{
+"restaurantName": ["Mcdonald",2222,3333,4444],
+"branches": ["Mary","Peter","David","John"],
+"openDate": ["Monday - Sunday: 24hours","Wong","Cheung","Leung"],
+"address": ["Shop Nos. 245-247, 2/F, Wo Che Shopping Centre, Wo Che Estate, Tak Hau Street, Shatin, N.T.",21,19,20],
+"telephone": [26998365,21,19,20],
+"dishes": ["United States of America","male","male","male"],
+"uploadPhoto": ["mcdonald.png","male","male","male"]
+}
+

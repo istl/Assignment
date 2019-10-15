@@ -1,0 +1,25 @@
+<script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script>
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+          
+      $.getJSON('resultEx.json', function(tb){
+         var showTb="";
+         
+         for(i=0;i<=tb.studid.length-1;i++){
+            showTb+="<tbody id='myTable' bgcolor='#DFB741'><tr><td>" + tb.studid[i] + "</td><td>"  + tb.name[i] + "</td><td>" + tb.lastname[i] + "</td><td>" + tb.age[i] + "</td><td>" + tb.sex[i] + "</td></tr></tbody>";
+         }
+         $("#table").html("<table class='table table-bordered table-striped' border='2' style='width: 100%;'><thead><tr bgcolor='green'><th>Stud_ID</th><th>Name</th><th>LastName</th></th><th>Age</th><th>Sex</th></tr></thead>" +showTb+"</table>");
+      });
+   });
+
+</script>
+<input class="form-control" id="myInput"  type="text" placeholder="Search.." style="width: 50%;">

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script>
+// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+
+</script>
+<script>
+  $(document).ready(function() {
+    $.getJSON('restData.json', function(tb){
+            var showTb="";
+            var count=0;
+            var getName;
+            function editUpdate() {
+                            document.getElementById("editName").disabled = false;
+                            document.getElementById("editBranches").disabled = false;
+                            document.getElementById("openDate").disabled = false;
+                            document.getElementById("address").disabled = false;
+                            document.getElementById("editPhone").disabled = false;
+                            document.getElementById("dishes").disabled = false;
+                            document.getElementById("restType").disabled = false;
+                            document.getElementById("uploadPhoto").disabled = false;
+                            document.getElementById('addSpecialMenu').style.visibility = 'hidden';
+                            document.getElementById('btnUpdate').style.visibility = 'hidden';
+                            document.getElementById('saveRest').style.visibility = 'visible';
+                          }
+
+                          function updateSave(){
+                            document.getElementById("editName").disabled = true;
+                            document.getElementById("editBranches").disabled = true;
+                            document.getElementById("openDate").disabled = true;
+                            document.getElementById("address").disabled = true;
+                            document.getElementById("editPhone").disabled = true;
+                            document.getElementById("dishes").disabled = true;
+                            document.getElementById("restType").disabled = true;
+                            document.getElementById("uploadPhoto").disabled = true;
+                            document.getElementById('addSpecialMenu').style.visibility = 'visible';
+                            document.getElementById('saveRest').style.visibility = 'hidden';
+                          }
+                  var row=0;
+                    $("#addMenu").click(function(){
+                      $("#menuTable").append("<tr id="+row+"><td><input type='text'></td><td><select><option>special</option></select></td><td><input type='date'></td><td><input type='text'></td><td><input type='checkbox' value='hide'>Hidden</td><td><button id='deleteMenu'>Delete Menu</button></td></tr>");
+                        row=row+1;
+                    });
+                    $("#menuTable").on('click', '#deleteMenu', function () {
+                    $(this).closest('tr').remove();
+                  });
+                  
+                    
+            for(i=0;i<=tb.restaurantName.length-1;i++){
+            var rest=tb.restaurantName[i];
+      
+              $("#table").append("<table border='1'><tr bgcolor='yelow'><td><button type='button' id='editRest' class='btn btn-info btn-lg' data-toggle='modal' data-target='#"+tb.restaurantName[i]+"'>"+rest+"</button></td></tr></table>"
+              + "<div class='modal fade' id='"+tb.restaurantName[i]+"' role='dialog'><div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal'>&times;</button>"
+              + "<h2 class='modal-title'>Edit Restaurant </h2></div>"
+              +"<div class='modal-body'><form class='form-horizontal' id='editRestaurant'><div class='form-group' align='center'><div class='col-sm-10' align='center'><button type='button' class='btn btn-primary' style='width: 45%;' id='btnUpdate' onclick='editUpdate()' >Update</button>"
+              +"<button type='button' class='btn btn-danger' style='width: 45%;' onclick='deleteForm()' data-dismiss='modal'>Delete</button>"
+              + "</div></div><hr/>"
+              +"<div class='form-group'><label class='control-label col-sm-2' >Restaurant Name:</label><div class='col-sm-10'>"
+              +"<input type='text' class='form-control' style='width:50%;' id='editName' placeholder='Enter Name"+rest +"' disabled></div></div><hr/>"
+              +"<div class='form-group'><label class='control-label col-sm-2' for='branches'>Branches:</label><div class='col-sm-10'>"
+              +"<select class='form-control' id='editBranches' style='width:45%;' disabled><option>Mount Davis</option><option>Kennedy Town</option>"
+              +"<option>Pok Fu Lam</option><option>Western District</option><option>Mid Levels</option><option>Peak</option><option>Sai Ying Pun</option><option>Central</option><option>Wan Chai</option>"
+              +"<option>Happy Valley</option><option>Causeway Bay</option><option>North Point</option><option>Quarry Bay</option><option>Sau Kei Wan</option>"
+              +"<option>Chai Wan</option><option>Stonecutters Island</option><option>Lai Chi Kok</option><option>Cheung Sha Wan</option><option>North Cheung Sha Wan</option>"
+              +"<option>Sham Shui Po</option><option>Mong Kok</option><option>Shek Kip Mei</option><option>Yau Ma Tei</option><option>Tsim Sha Tsui</option>"
+              +"<option>King's Park</option><option>Ho Man Tin</option><option>Kowloon Tong</option><option>Hung Hom</option><option>Ma Tau Kok</option>"
+              +"<option>Wong Tai Sin</option><option>Kowloon City</option><option>Hong Kong Airport (Kai Tak)</option><option>San Po Kong</option><option>Jordan Valley</option>"
+              +"<option>Ngau Tau Kok</option><option>Kwun Tong</option><option>Yau Tong</option><option>Lei Yue Mun</option><option>Diamond Hill (Area)</option>"
+              +"<option>Ngau Chi Wan (Area)</option><option>Lung Cheung Road (Area)</option><option>Tsuen Wan</option><option>Sha Tin</option><option>Tai Po</option>"
+              +"<option>Tuen Mun</option><option>Sai Kung</option><option>Sheung Shui</option><option>Fan Ling</option><option>Sha Tau Kok</option>"
+              +"<option>Ta Kwu Ling</option></select></div></div><hr/>"
+              +"<div class='form-group'><label class='control-label col-sm-2' >Open Date:</label><div class='col-sm-10'><textarea class='form-control' rows='5' id='openDate' placeholder='Enter Open Date' disabled></textarea></div></div><hr/>"
+              +"<div class='form-group'><label class='control-label col-sm-2' for='address'>Address:</label><div class='col-sm-10'><textarea class='form-control' rows='5' id='address' placeholder='Enter Address' disabled></textarea></div></div><hr/>"
+              +"<div class='form-group'><label class='control-label col-sm-2' for='address'>Telephone:</label><div class='col-sm-10'><input type='text' class='form-control' style='width:50%;' id='editPhone' placeholder='Enter Telephone Number' disabled></div></div><hr/>"
+              +"<div class='form-group'><label class='control-label col-sm-2' for='address'>Dishes:</label><div class='col-sm-10'><select class='form-control' id='dishes' style='width:45%;' disabled>"
+              +"<option>Vietnam</option><option>Serbia</option><option>Jordan</option><option>Mexico</option><option>Italy</option>"
+              +"<option>Taiwan</option><option>Mexico</option><option>Taiwan</option><option>Montenegro</option><option>Nicaragua</option>"
+              +"<option>Burma (Myanmar)</option><option>France</option><option>El Salvador</option><option>Greece</option><option>United States of America</option>"
+              +"<option>Kosovo</option><option>Thailand</option><option>Georgia</option><option>Ethiopia</option><option>Armenia</option>"
+              +"<option>Costa Rica</option><option>Romania</option><option>Philippines</option><option>Belize</option><option>Singapore</option>"
+              +"<option>Israel</option><option>Panama</option><option>Japan</option><option>Laos</option><option>Hungary</option>"
+              +"<option>South Korea</option><option>The Seychelles</option><option>Cyprus</option><option>Luxembourg</option><option>Canada</option>"
+              +"<option>Tanzania</option><option>Iceland</option><option>Jamaica</option><option>Slovakia</option><option>Norway</option>"
+              +"<option>Portugal</option><option>Spain</option><option>Belgium</option><option>Czech Republic</option><option>Austria</option>"
+              +"<option>Guatemala</option></select></div></div><hr/>"
+              +"<div class='form-group'><label class='control-label col-sm-2' for='address'>Food/ Restaurant Type:</label><div class='col-sm-10'><select class='form-control' id='restType' style='width:45%;' disabled>"
+              +"<option>Tea Restaurant</option><option>Food Stall Noodles</option><option>Dai Pai Dong</option><option>Noodles/Rice Noodles</option><option>Congee</option>"
+              +"<option>Wonton/Dumpling</option><option>Fast Food</option><option>Cooked Food Center</option><option>Snack Shop & Deli</option></select>"
+              +"</div></div><hr/><div class='form-group'><label class='control-label col-sm-2' for='address'>Upload Photo:</label><input type='file' name='pic'  accept='image/*' id='uploadPhoto' disabled/>"
+              +"</div><hr/><div class='form-group'><button type='button' class='btn btn-success' data-toggle='modal' style='width:45%;' data-target='#editMenu'>Edit Menu</button><div class='modal fade' id='editMenu'>"
+              +"<div class='modal-dialog modal-lg' style='width:80%'><div class='modal-content'><div class='modal-header'><h4 class='modal-title'>Edit Menu</h4>"
+              +"<button type='button' class='close' data-dismiss='modal'>&times;</button></div><div class='modal-body'><button type='button' id='addMenu'>Add Menu</button>"
+              +"<hr/><table id='menuTable' width='100%' border='1'><tr><th>Name</th><th>Type</th><th>Date</th><th>$</th><th>Status</th><th>Option</th></tr></table></div>"
+              +"<div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button></div></div></div></div>"
+              +"<button type='button' class='btn btn-success' id='saveRest' width='45%' style='visibility: hidden;' onclick='updateSave()'>Save</button></div></form></div>"
+              +"<div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div></div></div>");
+              
+            }
+          
+         
+           $("#"+restaurantName[this]).click(function(){
+
+            $("#editName").val(this);
+            
+           });
+            
+
+           
+                
+              
+            
+            
+           
+         
+    
+ $("#addButton").click(function(){
+
+  getName = $("#name").val();
+   $("#myTable").append("<tr bgcolor='yelow'><td><button type='button' value='"+getName+"' class='btn btn-info btn-lg' data-toggle='modal' data-target='#editRest' >"+getName+"</button></td></tr>");
+   $("#name").val("");
+   $("#editName").val(getName);
+ });
+});
+  });
+</script>
+<style>
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width:15%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+li a {
+  display: block;
+  font-size: 35px;
+  font-weight: bold;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+
+
+
+
+
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* Alert message */
+.alert {
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+.alert.warning {background-color: #ff9800;
+width: 400px;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  width : 10px;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+
+
+/* background */
+.background { 
+  position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+  background: url(../photo/food-background.jpg) no-repeat ; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.table {
+  width: 50%;
+  margin-top: 100px;
+
+  margin: 0 auto; width: 80%;;
+  height : auto no-repeat center center fixed;
+	
+}
+
+.form-control{
+  height: 50px;
+  margin: 0 auto; width: 80%;;
+}
+@media only screen and (max-width : 700px){
+ 
+	#characterList {height : auto;}
+	
+}
+
+@media only screen and (max-height : 700px){
+
+	#characterList {height : auto;}
+}
+
+.box-2{padding:30px; width:150px; margin-bottom:10px; text-align:center;}
+#btnUpdate{
+  margin-left: 40px;
+}
+
+</style>
+<script type="text/javascript" 
+src="../jslib/jquery-1.11.1.js"></script>
+
+
+</head>
+<body >
+   
+
+<div class="background">
+    <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <div style="margin-left:25%;padding:1px 16px;height:auto;">
+<div class="login" align="right">
+<button  class="button" style="vertical-align:middle" data-toggle="modal" data-target="#login"><span>Login </span></button>
+</div>
+ <!-- The Modal -->
+ <div class="modal fade" id="login">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title">Yummy Everywhere</h1> 
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+                   
+
+<html lang="en">
+  <form action="upload.php" class="needs-validation" method="POST" novalidate>
+    <div class="form-group">
+      <label for="uname">Username:</label>
+      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+      
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+      
+    </div>
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember" required> Remember me
+        
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-danger">Clear</button>
+  </form>	
+<script>
+// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<br/>
+<div class="table" align="center" >
+  <div id="table" >
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addRest">Add Restaurant</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addRest" role="dialog">
+    <div class="modal-dialog modal-lg" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title">Add Restaurant </h2>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" id="addRestaurant">
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Restaurant Name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" style="width:50%;" id="name" placeholder="Enter Name" >
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <label class="control-label col-sm-2" for="branches">Branches:</label>
+      <div class="col-sm-10">
+      
+        <select class="form-control" id="branches" style="width:45%;">
+        <option>Mount Davis</option>
+        <option>Kennedy Town</option>
+        <option>Pok Fu Lam</option>
+        <option>Western District</option>
+        <option>Mid Levels</option>
+        <option>Peak</option>
+        <option>Sai Ying Pun</option>
+        <option>Central</option>
+        <option>Wan Chai</option>
+        <option>Happy Valley</option>
+        <option>Causeway Bay</option>
+        <option>North Point</option>
+        <option>Quarry Bay</option>
+        <option>Sau Kei Wan</option>
+        <option>Chai Wan</option>
+        <option>Stonecutters Island</option>
+        <option>Lai Chi Kok</option>
+        <option>Cheung Sha Wan</option>
+        <option>North Cheung Sha Wan</option>
+        <option>Sham Shui Po</option>
+        <option>Mong Kok</option>
+        <option>Shek Kip Mei</option>
+        <option>Yau Ma Tei</option>
+        <option>Tsim Sha Tsui</option>
+        <option>King's Park</option>
+        <option>Ho Man Tin</option>
+        <option>Kowloon Tong</option>
+        <option>Hung Hom</option>
+        <option>Ma Tau Kok</option>
+        <option>Wong Tai Sin</option>
+        <option>Kowloon City</option>
+        <option>Hong Kong Airport (Kai Tak)</option>
+        <option>San Po Kong</option>
+        <option>Jordan Valley</option>
+        <option>Ngau Tau Kok</option>
+        <option>Kwun Tong</option>
+        <option>Yau Tong</option>
+        <option>Lei Yue Mun</option>
+        <option>Diamond Hill (Area)</option>
+        <option>Ngau Chi Wan (Area)</option>
+        <option>Lung Cheung Road (Area)</option>
+        <option>Tsuen Wan</option>
+        <option>Sha Tin</option>
+        <option>Tai Po</option>
+        <option>Tuen Mun</option>
+        <option>Sai Kung</option>
+        <option>Sheung Shui</option>
+        <option>Fan Ling</option>
+        <option>Sha Tau Kok</option>
+        <option>Ta Kwu Ling</option>
+      </select>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <label class="control-label col-sm-2" >Open Date:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" rows="5" id="comment" placeholder="Enter Open Date"></textarea>
+        </div>
+      </div>
+      <hr/>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="address">Address:</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" rows="5" id="comment" placeholder="Enter Address"></textarea>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <label class="control-label col-sm-2" for="address">Telephone:</label>
+      <div class="col-sm-10">
+      
+        <input type="text" class="form-control" style="width:50%;" id="phone" placeholder="Enter Telephone Number">
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <label class="control-label col-sm-2" for="address">Dishes:</label>
+      <div class="col-sm-10">
+      
+        <select class="form-control" id="sel1" style="width:45%;">
+        <option>Vietnam</option>
+        <option>Serbia</option>
+        <option>Jordan</option>
+        <option>Mexico</option>
+        <option>Italy</option>
+        <option>Taiwan</option>
+        <option>Mexico</option>
+        <option>Taiwan</option>
+        <option>Montenegro</option>
+        <option>Nicaragua</option>
+        <option>Burma (Myanmar)</option>
+        <option>France</option>
+        <option>El Salvador</option>
+        <option>Greece</option>
+        <option>United States of America</option>
+        <option>Kosovo</option>
+        <option>Thailand</option>
+        <option>Georgia</option>
+        <option>Ethiopia</option>
+        <option>Armenia</option>
+        <option>Costa Rica</option>
+        <option>Romania</option>
+        <option>Philippines</option>
+        <option>Belize</option>
+        <option>Singapore</option>
+        <option>Israel</option>
+        <option>Panama</option>
+        <option>Japan</option>
+        <option>Laos</option>
+        <option>Hungary</option>
+        <option>South Korea</option>
+        <option>The Seychelles</option>
+        <option>Cyprus</option>
+        <option>Luxembourg</option>
+        <option>Canada</option>
+        <option>Tanzania</option>
+        <option>Iceland</option>
+        <option>Jamaica</option>
+        <option>Slovakia</option>
+        <option>Norway</option>
+        <option>Portugal</option>
+        <option>Spain</option>
+        <option>Belgium</option>
+        <option>Czech Republic</option>
+        <option>Austria</option>
+        <option>Guatemala</option>
+      </select>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">        
+      <label class="control-label col-sm-2" for="address">Food/ Restaurant Type:</label>
+      <div class="col-sm-10">
+      
+        <select class="form-control" id="sel1" style="width:45%;">
+        <option>Tea Restaurant</option>
+        <option>Food Stall Noodles</option>
+        <option>Dai Pai Dong</option>
+        <option>Noodles/Rice Noodles</option>
+        <option>Congee</option>
+        <option>Wonton/Dumpling</option>
+        <option>Fast Food</option>
+        <option>Cooked Food Center</option>
+        <option>Snack Shop & Deli</option>
+      </select>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="address">Upload Photo:</label>
+     <input type="file" name="pic"  accept="image/*" id="uploadPho">
+     
+    </div>
+    <hr/>
+    <div class="form-group">        
+
+        <button type="button" class="btn btn-success" style="width:45%;" id="addButton" data-dismiss="modal">Add Restaurant</button>
+        
+    </div>
+  </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div></p>
+  <table id="myTable" border="1">
+    
+
+  </table>
+  </p>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editRest">Edit Restaurant</button>
+
+
+    
+</div>
+</div>
+</div>
+
+</body>
+</html>
